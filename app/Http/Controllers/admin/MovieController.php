@@ -244,6 +244,9 @@ class MovieController extends Controller
     }
 
     public function createImgInColor($tmpName, $type){
+        if(extension_loaded('gd')){
+            echo("loaded extension");
+        }
 
         list($width, $height) = getimagesize($tmpName);
 
