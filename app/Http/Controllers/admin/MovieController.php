@@ -213,25 +213,25 @@ class MovieController extends Controller
         $alt = explode(".",$fileName);
         $alt = $alt[0];
 
-        $new_image = $this->createImgInColor($imgPath, $type);
+//        $new_image = $this->createImgInColor($imgPath, $type);
 
         $smallerFileName = 'edited_' . $finalFileName;
         $path = $folder . $finalFileName;
         $smallerFilePath = $folder . $smallerFileName;
 
-        switch ($type) {
-            case 'image/jpeg':
-                imagejpeg($new_image, $smallerFilePath, 75);
-                break;
-            case 'image/png':
-                imagepng($new_image, $smallerFilePath);
-                break;
-            case 'image/jpg':
-                imagejpg($new_image, $smallerFilePath);
-                break;
-        }
+//        switch ($type) {
+//            case 'image/jpeg':
+//                imagejpeg($new_image, $smallerFilePath, 75);
+//                break;
+//            case 'image/png':
+//                imagepng($new_image, $smallerFilePath);
+//                break;
+//            case 'image/jpg':
+//                imagejpg($new_image, $smallerFilePath);
+//                break;
+//        }
 
-//        if (move_uploaded_file($imgPath, $path)) {
+        if (copy($imgPath, $path)) {
         //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
             //echo "Slika je upload-ovana na server!";
             try{
@@ -240,13 +240,13 @@ class MovieController extends Controller
             }catch (\PDOException $ex){
                 return back()->with("error","There was an error");
             }
-//        }
+        }
     }
 
     public function createImgInColor($tmpName, $type){
-        if(extension_loaded('gd')){
-            echo("loaded extension");
-        }
+//        if(extension_loaded('gd')){
+//            echo("loaded extension");
+//        }
 
         list($width, $height) = getimagesize($tmpName);
 
