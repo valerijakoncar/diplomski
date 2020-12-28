@@ -7,6 +7,7 @@
 {{--    <meta name="keywords" content=""/>--}}
 {{--    <meta name="author" content="">--}}
     <link rel="shortcut icon" href="{{asset('images/edited/popcorn.ico')}}"/>
+    <script src="https://app.simplefileupload.com/buckets/b300dedf232d704738fcafcbf9374df4.js"></script>
 {{--    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Carter+One=swap" rel="stylesheet">--}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
