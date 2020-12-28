@@ -42,7 +42,7 @@ class MovieController extends Controller
 
     public function insertMovie(InsertMovieRequest $request){
         //InsertMovieRequest
-        dd($request);
+//        dd($request);
         $name = $request->input("nameMovIns");
         $running_time = $request->input("timeMovIns");
         $desc = $request->input("taShortDescIns");
@@ -69,26 +69,26 @@ class MovieController extends Controller
         $activeSlider = $request->input("activeSliderMovIns");
 
         $picIds = [];
-        $imgName = "picMovIns";
+//        $imgName = "picMovIns";
         $picId = 0;
-        if (!empty($_FILES[$imgName]['name'])) {
-            $picId = $this->proccessImg($imgName);
+//        if (!empty($_FILES[$imgName]['name'])) {
+            $picId = $this->proccessImg($request->input("picMovIns"));
             if($picId){
                 $picIds["picture_id"] = $picId;
             }
-        }
+//        }
         $imgNameBg = "picMovBgIns";
         $picBgId = 0;
-        if (!empty($_FILES[$imgNameBg]['name'])) {
-            $picBgId = $this->proccessImgMovieBg($imgNameBg);
+//        if (!empty($_FILES[$imgNameBg]['name'])) {
+            $picBgId = $this->proccessImgMovieBg($request->input("picMovBgIns"));
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
             }
-        }
+//        }
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
-        if (!empty($_FILES[$imgNameSlider]['name'])) {
-            $picSliderId = $this->proccessImgMovieBg($imgNameSlider);//ova funkcija ne obradjuje sliku
+        if ($request->input("picSliderMovIns") != null) {
+            $picSliderId = $this->proccessImgMovieBg($request->input("picSliderMovIns"));//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
             }
@@ -106,7 +106,7 @@ class MovieController extends Controller
             $this->activityModel->write($text, date("Y.m.d H:i:s"), $userId);
             return back()->with("successIns","New movie was inserted.");
         }catch(\PDOException $ex){
-            dd($ex->getMessage());
+//            dd($ex->getMessage());
             return back()->with("errorIns","There was an error.");
         }
     }
@@ -141,24 +141,24 @@ class MovieController extends Controller
         $picIds = [];
         $imgName = "picMovUpd";
         $picId = 0;
-        if (!empty($_FILES[$imgName]['name'])) {
-            $picId = $this->proccessImg($imgName);
+        if ($request->input("picMovUpd") != null) {
+            $picId = $this->proccessImg($request->input("picMovUpd"));
             if($picId){
                 $picIds["picture_id"] = $picId;
             }
         }
         $imgNameBg = "picMovBgUpd";
         $picBgId = 0;
-        if (!empty($_FILES[$imgNameBg]['name'])) {
-            $picBgId = $this->proccessImgMovieBg($imgNameBg);
+        if ($request->input("picMovBgUpd") != null) {
+            $picBgId = $this->proccessImgMovieBg($request->input("picMovBgUpd"));
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
             }
         }
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
-        if (!empty($_FILES[$imgNameSlider]['name'])) {
-            $picSliderId = $this->proccessImgMovieBg($imgNameSlider);//ova funkcija ne obradjuje sliku
+        if ($request->input("picSliderMovUpd") != null) {
+            $picSliderId = $this->proccessImgMovieBg($request->input("picSliderMovUpd"));//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
             }
@@ -192,17 +192,28 @@ class MovieController extends Controller
         return response()->json(["movies"=>$movies], 200);
     }
 
-    public function proccessImg($imgName){
-        $fileName = $_FILES[$imgName]['name'];
+    public function proccessImg($imgPath){
+//        $fileName = $_FILES[$imgName]['name'];
+        $imgArray = explode("/", $imgPath);
+        $fileName = end($imgArray);
+        $extension = strtolower(explode(".",$fileName)[1]);
+        $type = "";
+        if($extension == 'jpg'){
+            $type = "image/jpg";
+        }else if($extension == 'png'){
+            $type = "image/png";
+        }else if($extension == 'jpeg'){
+            $type = "image/jpeg";
+        }
         $finalFileName = time() . "_" . $fileName;
-        $tmpName = $_FILES[$imgName]['tmp_name'];
+//        $tmpName = $_FILES[$imgName]['tmp_name'];
         $folder = 'images/edited/';
-        $type = $_FILES[$imgName]['type'];
-        $error = $_FILES[$imgName]['error'];
+//        $type = $_FILES[$imgName]['type'];
+//        $error = $_FILES[$imgName]['error'];
         $alt = explode(".",$fileName);
         $alt = $alt[0];
 
-        $new_image = $this->createImgInColor($tmpName, $type);
+        $new_image = $this->createImgInColor($imgPath, $type);
 
         $smallerFileName = 'edited_' . $finalFileName;
         $path = $folder . $finalFileName;
@@ -220,7 +231,8 @@ class MovieController extends Controller
                 break;
         }
 
-        if (move_uploaded_file($tmpName, $path)) {
+//        if (move_uploaded_file($imgPath, $path)) {
+        //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
             //echo "Slika je upload-ovana na server!";
             try{
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
@@ -228,7 +240,7 @@ class MovieController extends Controller
             }catch (\PDOException $ex){
                 return back()->with("error","There was an error");
             }
-        }
+//        }
     }
 
     public function createImgInColor($tmpName, $type){
@@ -252,16 +264,27 @@ class MovieController extends Controller
         return $new_image;
     }
 
-    public function proccessImgMovieBg($imgName){
-        $fileName = $_FILES[$imgName]['name'];
+    public function proccessImgMovieBg($imgPath){
+//        $fileName = $_FILES[$imgName]['name'];
+        $imgArray = explode("/", $imgPath);
+        $fileName = end($imgArray);
+        $extension = strtolower(explode(".",$fileName)[1]);
+        $type = "";
+        if($extension == 'jpg'){
+            $type = "image/jpg";
+        }else if($extension == 'png'){
+            $type = "image/png";
+        }else if($extension == 'jpeg'){
+            $type = "image/jpeg";
+        }
         $finalFileName = time() . "_" . $fileName;
-        $tmpName = $_FILES[$imgName]['tmp_name'];
+//        $tmpName = $_FILES[$imgName]['tmp_name'];
         $folder = 'images/edited/';
-        $type = $_FILES[$imgName]['type'];
+//        $type = $_FILES[$imgName]['type'];
         $alt = explode(".",$fileName);
         $alt = $alt[0];
-        $path = $folder . $finalFileName;
-        if (move_uploaded_file($tmpName, $path)) {
+        $path = "https://diplomski-movie-blackout.herokuapp.com/" . $folder . $finalFileName;
+        if (copy($imgPath, $path)) {
             //echo "Slika je upload-ovana na server!";
             try{
                 $picId = $this->movieModel->insertImage($finalFileName, $alt, $type, $folder);

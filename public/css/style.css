@@ -2964,6 +2964,9 @@ a{
     font-size: 25px;
     color: #777777;
 }
+iframe{
+    height: 25px;
+}
 
                                      /*  RESPONSIVE  */
 @media screen and (max-width: 1400px){
