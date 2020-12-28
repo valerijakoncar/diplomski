@@ -7,10 +7,12 @@
         <div id="footer">
             <div id="footerInfoCont">
                 <div id="logoSocialsDiv">
-                    <div id="footerLogo" class="logo">
-                        <div id="popcornFooter" class="popcorn"></div>
-                        <h3>MovieBlackout</h3>
-                    </div>
+                    <a href="{{url('home')}}">
+                        <div id="footerLogo" class="logo">
+                            <div id="popcornFooter" class="popcorn"></div>
+                            <h3>MovieBlackout</h3>
+                        </div>
+                    </a>
                     <div id="followSocials">
                         <p id="followUs">Follow us on social media<span class="fa fa-heart-o"></span></p>
                         <ul id="footerSocials">

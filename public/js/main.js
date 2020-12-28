@@ -891,7 +891,7 @@ function showReservation(e){
     });
 }
 
-var global_url = "http://localhost/diplomski/public/";
+var global_url = "https://diplomski-movie-blackout.herokuapp.com/";
 function hideRepplies() {
     $(this).parent().parent().parent().parent().find(".repliesDiv").slideUp();
 }
