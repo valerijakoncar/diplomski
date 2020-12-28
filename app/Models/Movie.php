@@ -228,7 +228,7 @@ class Movie
         $movie = \DB::table("movie AS m")
                 ->join("movie_picture AS mp","m.id","mp.movie_id")
                 ->join("picture AS p","mp.picture_id","p.id")
-                ->join("projection as pro","pro.movie_id","m.id")
+//                ->join("projection as pro","pro.movie_id","m.id")
                 ->join("director AS d","m.director_id","d.id")
                 ->join("distributer AS di","m.distributer_id","di.id")
                 ->join("country as c","m.country_id","c.id")

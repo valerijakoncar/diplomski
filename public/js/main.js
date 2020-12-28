@@ -2984,7 +2984,7 @@ function printMoviesAdmin(movies){
         </div>
         <div class="movieDirectorAdmin movieInfoAdmin btnsAdminMovies">
             <div><input type="button" value="Update" class="btnUpdateMov" data-id="${m.idMovie}"/></div>
-            <div><a href="${global_url}deleteMovie/'${m.idMovie}" data-id="${m.idMovie}" class="btnDeleteMov">Delete</a></div>
+            <div><a href="${global_url}deleteMovie/${m.idMovie}" data-id="${m.idMovie}" class="btnDeleteMov">Delete</a></div>
         </div>
     </div>`;
     }

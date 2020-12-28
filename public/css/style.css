@@ -2968,7 +2968,13 @@ iframe{
     height: 25px;
     width: 115px;
 }
-
+#widget #sfn-frame-wrapper{
+    height: 100px;
+    width: 100%;
+}
+#widget #sfn-frame-wrapper .dropzone{
+    width: 100%;
+}
                                      /*  RESPONSIVE  */
 @media screen and (max-width: 1400px){
     #logoMessg {
