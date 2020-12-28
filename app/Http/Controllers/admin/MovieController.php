@@ -41,6 +41,8 @@ class MovieController extends Controller
     }
 
     public function insertMovie(InsertMovieRequest $request){
+        //InsertMovieRequest
+        dd($request);
         $name = $request->input("nameMovIns");
         $running_time = $request->input("timeMovIns");
         $desc = $request->input("taShortDescIns");
