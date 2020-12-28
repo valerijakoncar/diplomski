@@ -302,7 +302,8 @@ class MovieController extends Controller
 //        $type = $_FILES[$imgName]['type'];
         $alt = explode(".",$fileName);
         $alt = $alt[0];
-        $path = "https://diplomski-movie-blackout.herokuapp.com/" . $folder . $finalFileName;
+        $path =  $folder . $finalFileName;
+//        "https://diplomski-movie-blackout.herokuapp.com/" .
         $file = fopen ($imgPath, "rb");
         if ($file) {
             //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
