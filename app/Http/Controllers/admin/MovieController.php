@@ -230,10 +230,26 @@ class MovieController extends Controller
 //                imagejpg($new_image, $smallerFilePath);
 //                break;
 //        }
-
-        if (copy($imgPath, $path)) {
+        $file = fopen ($imgPath, "rb");
+        if ($file) {
         //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
             //echo "Slika je upload-ovana na server!";
+            $newf = fopen ($smallerFilePath, "a"); // to overwrite existing file
+
+            if ($newf){
+                while(!feof($file)) {
+                    fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
+
+                }
+            }
+            if ($file) {
+                fclose($file);
+            }
+
+            if ($newf) {
+                fclose($newf);
+            }
+
             try{
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
                 return $picId;
@@ -287,7 +303,25 @@ class MovieController extends Controller
         $alt = explode(".",$fileName);
         $alt = $alt[0];
         $path = "https://diplomski-movie-blackout.herokuapp.com/" . $folder . $finalFileName;
-        if (copy($imgPath, $path)) {
+        $file = fopen ($imgPath, "rb");
+        if ($file) {
+            //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
+            //echo "Slika je upload-ovana na server!";
+            $newf = fopen ($path, "a"); // to overwrite existing file
+
+            if ($newf){
+                while(!feof($file)) {
+                    fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
+
+                }
+            }
+            if ($file) {
+                fclose($file);
+            }
+
+            if ($newf) {
+                fclose($newf);
+            }
             //echo "Slika je upload-ovana na server!";
             try{
                 $picId = $this->movieModel->insertImage($finalFileName, $alt, $type, $folder);
