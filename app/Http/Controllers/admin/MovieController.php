@@ -236,7 +236,7 @@ class MovieController extends Controller
 //                imagejpg($new_image, $smallerFilePath);
 //                break;
 //        }
-        dd(realpath("images/tenet4.jpg"));
+//        dd(realpath("images/tenet4.jpg"));
         $file = fopen ("images/edited/beauty.png", "rb");//$imgPath
         if ($file) {
         //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
@@ -260,7 +260,7 @@ class MovieController extends Controller
             }
 
             try{
-//                dd(realpath($smallerFilePath));
+                dd(realpath($smallerFilePath));
                 dd(realpath("edited_1609263134_download1.jpg"));
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
                 return $picId;
