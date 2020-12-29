@@ -2968,6 +2968,9 @@ iframe{
     height: 25px;
     width: 115px;
 }
+#widget{
+    background-color: #0d0b0b;
+}
 #widget #sfn-frame-wrapper{
     height: 100px;
     width: 100%;

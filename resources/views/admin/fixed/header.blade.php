@@ -243,11 +243,11 @@
             <div class="labelInputHolder">
                 <label class="inputAdminLabel">Movie poster</label>
                 <div class="labelInputHolderMultiple">
-                    <input type="file" class="inputAdminClass" id="picMovIns" name="picMovIns"/>
+                    <input type="hidden" class="inputAdminClass simple-file-upload" id="picMovIns" name="picMovIns"/>
                     <label class="inputAdminLabel inputAdminLabelSecond">Movie bg</label>
-                    <input type="file" class="inputAdminClass" id="picMovBgIns" name="picMovBgIns"/>
+                    <input type="hidden" class="inputAdminClass simple-file-upload" id="picMovBgIns" name="picMovBgIns"/>
                     <label class="inputAdminLabel inputAdminLabelSecond">Slider pic</label>
-                    <input type="file" class="inputAdminClass" id="picSliderMovIns" name="picSliderMovIns"/>
+                    <input type="hidden" class="inputAdminClass simple-file-upload" id="picSliderMovIns" name="picSliderMovIns"/>
                 </div>
             </div>
             <input type="submit" value="Insert" id="insMov"/>

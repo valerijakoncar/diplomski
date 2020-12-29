@@ -107,4 +107,42 @@
             </ul>
         </div>
     </div>
+    <?php
+//    $smallerFileName = 'edited_' . "mica.jpg";
+//    $path = $folder . $finalFileName;
+//    $smallerFilePath = "images/edited/" . $smallerFileName;
+
+    //        switch ($type) {
+    //            case 'image/jpeg':
+    //                imagejpeg($new_image, $smallerFilePath, 75);
+    //                break;
+    //            case 'image/png':
+    //                imagepng($new_image, $smallerFilePath);
+    //                break;
+    //            case 'image/jpg':
+    //                imagejpg($new_image, $smallerFilePath);
+    //                break;
+    //        }
+//    $file = fopen ("images/tenet5.jpg", "rb");
+//    if ($file) {
+//        //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
+//        //echo "Slika je upload-ovana na server!";
+//        $newf = fopen ($smallerFilePath, "a"); // to overwrite existing file
+//
+//        if ($newf){
+////            dd("mica");
+//            while(!feof($file)) {
+//                fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
+//
+//            }
+//        }
+//        if ($file) {
+//            fclose($file);
+//        }
+//
+//        if ($newf) {
+//            fclose($newf);
+//        }
+//        }
+    ?>
     @endsection
