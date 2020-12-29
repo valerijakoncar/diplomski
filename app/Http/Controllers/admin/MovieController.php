@@ -236,7 +236,7 @@ class MovieController extends Controller
 //                imagejpg($new_image, $smallerFilePath);
 //                break;
 //        }
-        dd(realpath("images/edited/tenet4.jpg"));
+        dd(realpath("images/tenet4.jpg"));
         $file = fopen ("images/edited/beauty.png", "rb");//$imgPath
         if ($file) {
         //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
