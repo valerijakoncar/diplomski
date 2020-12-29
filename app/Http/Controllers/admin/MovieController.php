@@ -247,6 +247,8 @@ class MovieController extends Controller
                     fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
 
                 }
+            }else{
+                dd("ff");
             }
             if ($file) {
                 fclose($file);
