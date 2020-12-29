@@ -197,7 +197,7 @@ class MovieController extends Controller
 //        $fileName = $_FILES[$imgName]['name'];
         if(copy($imgPath, "images/edited/". $fileName)){
 //            dd("uploaded");
-            dd(realpath("images/edited/". $fileName));
+            dd(realpath("/images/edited/"));
         }
 
         $imgArray = explode("/", $imgPath);
