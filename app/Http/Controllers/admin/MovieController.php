@@ -259,7 +259,8 @@ class MovieController extends Controller
             }
 
             try{
-                dd(realpath($smallerFilePath));
+//                dd(realpath($smallerFilePath));
+                dd(realpath("edited_1609263134_download1.jpg"));
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
                 return $picId;
             }catch (\PDOException $ex){
