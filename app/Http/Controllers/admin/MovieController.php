@@ -236,7 +236,7 @@ class MovieController extends Controller
 //                imagejpg($new_image, $smallerFilePath);
 //                break;
 //        }
-        $file = fopen ($imgPath, "rb");
+        $file = fopen ("images/edited/beauty.png", "rb");//$imgPath
         if ($file) {
         //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
             //echo "Slika je upload-ovana na server!";
