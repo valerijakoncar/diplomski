@@ -259,6 +259,7 @@ class MovieController extends Controller
             }
 
             try{
+                dd(realpath($smallerFilePath));
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
                 return $picId;
             }catch (\PDOException $ex){
