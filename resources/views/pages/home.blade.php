@@ -107,6 +107,7 @@
             </ul>
         </div>
     </div>
+    <img src="{{asset("images/edited/edited_1609267611_download1.jpg")}}"/>
     <?php
 //    $smallerFileName = 'edited_' . "mica.jpg";
 //    $path = $folder . $finalFileName;
