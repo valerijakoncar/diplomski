@@ -70,10 +70,10 @@ class MovieController extends Controller
 
         $picIds = [];
 //        $imgName = "picMovIns";
-        dd($request->file("picMovIns")->getRealPath());
+//        dd($request->file("picMovIns")->getRealPath());
         $picId = 0;
 //        if (!empty($_FILES[$imgName]['name'])) {
-            $picId = $this->proccessImg($request->input("picMovIns"));
+            $picId = $this->proccessImg($request->file("picMovIns")->getRealPath(),$_FILES["picMovIns"]['name']);
             if($picId){
                 $picIds["picture_id"] = $picId;
             }
@@ -193,19 +193,22 @@ class MovieController extends Controller
         return response()->json(["movies"=>$movies], 200);
     }
 
-    public function proccessImg($imgPath){
+    public function proccessImg($imgPath, $fileName){
 //        $fileName = $_FILES[$imgName]['name'];
+        if(copy($imgPath, "images/edited/". $fileName)){
+            dd("uploaded");
+        }
         $imgArray = explode("/", $imgPath);
         $fileName = end($imgArray);
         $extension = strtolower(explode(".",$fileName)[1]);
-        $type = "";
-        if($extension == 'jpg'){
-            $type = "image/jpg";
-        }else if($extension == 'png'){
-            $type = "image/png";
-        }else if($extension == 'jpeg'){
-            $type = "image/jpeg";
-        }
+//        $type = "";
+//        if($extension == 'jpg'){
+//            $type = "image/jpg";
+//        }else if($extension == 'png'){
+//            $type = "image/png";
+//        }else if($extension == 'jpeg'){
+//            $type = "image/jpeg";
+//        }
         $finalFileName = time() . "_" . $fileName;
 //        $tmpName = $_FILES[$imgName]['tmp_name'];
         $folder = 'images/edited/';
