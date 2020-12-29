@@ -196,8 +196,10 @@ class MovieController extends Controller
     public function proccessImg($imgPath, $fileName){
 //        $fileName = $_FILES[$imgName]['name'];
         if(copy($imgPath, "images/edited/". $fileName)){
-            dd("uploaded");
+//            dd("uploaded");
+            dd(realpath("download1.jpg"));
         }
+
         $imgArray = explode("/", $imgPath);
         $fileName = end($imgArray);
         $extension = strtolower(explode(".",$fileName)[1]);
