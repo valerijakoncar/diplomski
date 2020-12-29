@@ -70,7 +70,7 @@ class MovieController extends Controller
 
         $picIds = [];
 //        $imgName = "picMovIns";
-        $request->file("picMovIns")->store("images/edited");
+        dd($request->file("picMovIns")->getRealPath());
         $picId = 0;
 //        if (!empty($_FILES[$imgName]['name'])) {
             $picId = $this->proccessImg($request->input("picMovIns"));
