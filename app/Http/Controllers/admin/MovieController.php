@@ -23,6 +23,12 @@ class MovieController extends Controller
         $this->activityModel = new Activity();
     }
 
+    public function pokusaj(Request $request){
+        $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
+
+        dd($response);
+    }
+
     public function deleteMovie($id){
         try{
             $this->movieModel->deleteMovie($id);

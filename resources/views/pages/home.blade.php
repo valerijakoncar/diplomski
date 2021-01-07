@@ -107,6 +107,10 @@
             </ul>
         </div>
     </div>
+    <form id="pokusaj" name="pokusaj" action="{{url('pokusaj')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="pokusaj"/>
+    </form>
     <img src="{{asset("app/public/images/edited/edited_1609267611_download1.jpg")}}"/>
     <?php
 //    $smallerFileName = 'edited_' . "mica.jpg";

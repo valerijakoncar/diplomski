@@ -86,3 +86,4 @@ Route::get("/getLinks", [MenuLinkController::class, "getLinks"])->middleware(["I
 Route::get("/deleteLink/{id}", [MenuLinkController::class, "deleteLink"])->middleware(["IsAdminLoggedIn"]);
 Route::get("/deleteComment/{id}", [CommentController::class, "deleteComment"])->middleware(["IsAdminLoggedIn"]);
 Route::get("/sortActivity", [ActivityController::class, "sortActivity"])->middleware(["IsAdminLoggedIn"]);
+Route::post("/pokusaj", [\App\Http\Controllers\admin\MovieController::class, "pokusaj"]);
