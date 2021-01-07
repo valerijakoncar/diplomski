@@ -110,6 +110,7 @@
     <form id="pokusaj" name="pokusaj" action="{{url('pokusaj')}}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="file" name="pokusaj"/>
+        <input type="submit" value="Posalji"/>
     </form>
     <img src="{{asset("app/public/images/edited/edited_1609267611_download1.jpg")}}"/>
     <?php
