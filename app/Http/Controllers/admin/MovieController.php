@@ -87,7 +87,7 @@ class MovieController extends Controller
         $imgNameBg = "picMovBgIns";
         $picBgId = 0;
         if (!empty($_FILES[$imgNameBg]['name'])) {
-            $picBgId = $this->proccessImg($request->input("picMovBgIns")->getRealPath(),$imgNameBg);
+            $picBgId = $this->proccessImg($request->file("picMovBgIns")->getRealPath(),$imgNameBg);
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
             }
@@ -95,7 +95,7 @@ class MovieController extends Controller
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
         if ($request->input("picSliderMovIns") != null) {
-            $picSliderId = $this->proccessImg($request->input("picSliderMovIns")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
+            $picSliderId = $this->proccessImg($request->file("picSliderMovIns")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
             }
@@ -149,7 +149,7 @@ class MovieController extends Controller
         $imgName = "picMovUpd";
         $picId = 0;
         if ($request->input("picMovUpd") != null) {
-            $picId = $this->proccessImg($request->input("picMovUpd"));
+            $picId = $this->proccessImg($request->file("picMovUpd")->getRealPath(),$imgName);
             if($picId){
                 $picIds["picture_id"] = $picId;
             }
@@ -157,7 +157,7 @@ class MovieController extends Controller
         $imgNameBg = "picMovBgUpd";
         $picBgId = 0;
         if ($request->input("picMovBgUpd") != null) {
-            $picBgId = $this->proccessImgMovieBg($request->input("picMovBgUpd"));
+            $picBgId = $this->proccessImg($request->file("picMovBgUpd")->getRealPath(),$imgNameBg);
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
             }
@@ -165,7 +165,7 @@ class MovieController extends Controller
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
         if ($request->input("picSliderMovUpd") != null) {
-            $picSliderId = $this->proccessImgMovieBg($request->input("picSliderMovUpd"));//ova funkcija ne obradjuje sliku
+            $picSliderId = $this->proccessImg($request->file("picSliderMovUpd")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
             }
