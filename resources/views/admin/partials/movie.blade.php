@@ -1,6 +1,10 @@
 <div class="movieAdmin">
     <div class="moviePicAdmin movieInfoAdmin">
+        @if(strpos($movie->path, "cloudinary"))
+            <img src="{{ $m->path . $m->picName }}" alt="{{ $m->alt }}"/>
+            @else
         <img src="{{ asset($m->path . $m->picName) }}" alt="{{ $m->alt }}"/>
+        @endif
 {{--        width="120" height="180"--}}
         <div class="underImgMovieAdm">
             <p class="movieDateAdmin">Date aired:

@@ -2,7 +2,11 @@
     <div class="picGeneralMovieInfo">
         <div class="moviePic">
             <a href="{{ url('movie/'.$movie->idMovie) }}">
-                <img src="{{ asset($movie->path . $movie->picName) }}" alt="{{ $movie->alt }}" width="250" height="350"/>
+                @if(strpos($movie->path, "cloudinary"))
+                    <img src="{{$movie->path . $movie->picName }}" alt="{{ $movie->alt }}" width="250" height="350"/>
+                    @else
+                    <img src="{{ asset($movie->path . $movie->picName) }}" alt="{{ $movie->alt }}" width="250" height="350"/>
+                    @endif
             </a>
         </div>
         <div class="generalMovieInfo">

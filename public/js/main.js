@@ -1452,9 +1452,14 @@ function printMovies(movies){
         html += `<div class="movie">
                     <div class="picGeneralMovieInfo">
                         <div class="moviePic">
-                            <a href="${global_url}movie/${movie.idMovie}">
-                            <img src="${urlPics}/${movie.picName}" alt="${movie.alt}" width="250" height="350"/>
-                            </a>
+                            <a href="${global_url}movie/${movie.idMovie}">`;
+        if(movie.path.indexOf("cloudinary") != -1){
+            html += ` <img src="${movie.path}${movie.picName}" alt="${movie.alt}" width="250" height="350"/>`;
+        }else{
+            html += ` <img src="${urlPics}/${movie.picName}" alt="${movie.alt}" width="250" height="350"/>`;
+        }
+
+        html += `        </a>
                         </div>
                     <div class="generalMovieInfo">
                     <a href="${global_url}movie/${movie.idMovie}">
@@ -2935,9 +2940,14 @@ function printMoviesAdmin(movies){
     let html = '';
     for(let m of movies){
         html += `<div class="movieAdmin">
-                        <div class="moviePicAdmin movieInfoAdmin">
-                            <img src="${global_url}${m.path}${m.picName}" alt="${m.alt}" width="120" height="180"/>
-                            <p class="movieDateAdmin">Date aired:`;
+                        <div class="moviePicAdmin movieInfoAdmin">`;
+        if(m.path.indexOf("cloudinary") != -1){
+            html += `<img src="${m.path}${m.picName}" alt="${m.alt}" width="120" height="180"/>`;
+        }else{
+            html += `<img src="${global_url}${m.path}${m.picName}" alt="${m.alt}" width="120" height="180"/>`;
+        }
+
+        html += `<p class="movieDateAdmin">Date aired:`;
         let dateObj = new Date(m.in_cinemas_from);
         let dateArray = formatDate(dateObj);
 
