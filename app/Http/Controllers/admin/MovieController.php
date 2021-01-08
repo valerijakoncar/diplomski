@@ -200,12 +200,12 @@ class MovieController extends Controller
     }
 
     public function proccessImg($imgPath, $fileName){
-        $fileName = $_FILES[$fileName]['name'];
+        $picName = $_FILES[$fileName]['name'];
 
 
         $imgArray = explode("/", $imgPath);
 //        $fileName = end($imgArray);
-        $extension = strtolower(explode(".",$fileName)[1]);
+        $extension = strtolower(explode(".",$picName)[1]);
         $type = "";
         if($extension == 'jpg'){
             $type = "image/jpg";
@@ -214,9 +214,9 @@ class MovieController extends Controller
         }else if($extension == 'jpeg'){
             $type = "image/jpeg";
         }
-        $finalFileName = time() . "_" . $fileName;
+        $finalFileName = time() . "_" . $picName;
 //        $folder = 'images/edited/';
-        $alt = explode(".",$fileName);
+        $alt = explode(".",$picName);
         $alt = $alt[0];
 
 //        $new_image = $this->createImgInColor($imgPath, $type);
