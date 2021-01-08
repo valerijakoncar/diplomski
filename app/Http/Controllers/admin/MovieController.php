@@ -23,11 +23,11 @@ class MovieController extends Controller
         $this->activityModel = new Activity();
     }
 
-    public function pokusaj(Request $request){
-        $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
-
-        dd($response);
-    }
+//    public function pokusaj(Request $request){
+//        $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
+//
+//        dd($response);
+//    }
 
     public function deleteMovie($id){
         try{
@@ -75,27 +75,27 @@ class MovieController extends Controller
         $activeSlider = $request->input("activeSliderMovIns");
 
         $picIds = [];
-//        $imgName = "picMovIns";
+        $imgName = "picMovIns";
 //        dd($request->file("picMovIns")->getRealPath());
         $picId = 0;
-//        if (!empty($_FILES[$imgName]['name'])) {
-            $picId = $this->proccessImg($request->file("picMovIns")->getRealPath(),$_FILES["picMovIns"]['name']);
+        if (!empty($_FILES[$imgName]['name'])) {
+            $picId = $this->proccessImg($request->file("picMovIns")->getRealPath(),$imgName);
             if($picId){
                 $picIds["picture_id"] = $picId;
             }
-//        }
+        }
         $imgNameBg = "picMovBgIns";
         $picBgId = 0;
-//        if (!empty($_FILES[$imgNameBg]['name'])) {
-            $picBgId = $this->proccessImgMovieBg($request->input("picMovBgIns"));
+        if (!empty($_FILES[$imgNameBg]['name'])) {
+            $picBgId = $this->proccessImg($request->input("picMovBgIns")->getRealPath(),$imgNameBg);
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
             }
-//        }
+        }
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
         if ($request->input("picSliderMovIns") != null) {
-            $picSliderId = $this->proccessImgMovieBg($request->input("picSliderMovIns"));//ova funkcija ne obradjuje sliku
+            $picSliderId = $this->proccessImg($request->input("picSliderMovIns")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
             }
@@ -200,36 +200,33 @@ class MovieController extends Controller
     }
 
     public function proccessImg($imgPath, $fileName){
-//        $fileName = $_FILES[$imgName]['name'];
-        if(copy($imgPath, "images/edited/". $fileName)){
-//            dd("uploaded");
-//            dd(realpath("/images/edited/"));
-        }
+        $fileName = $_FILES[$fileName]['name'];
+
 
         $imgArray = explode("/", $imgPath);
 //        $fileName = end($imgArray);
-//        $extension = strtolower(explode(".",$fileName)[1]);
-//        $type = "";
-//        if($extension == 'jpg'){
-//            $type = "image/jpg";
-//        }else if($extension == 'png'){
-//            $type = "image/png";
-//        }else if($extension == 'jpeg'){
-//            $type = "image/jpeg";
-//        }
+        $extension = strtolower(explode(".",$fileName));
+        $type = "";
+        if($extension == 'jpg'){
+            $type = "image/jpg";
+        }else if($extension == 'png'){
+            $type = "image/png";
+        }else if($extension == 'jpeg'){
+            $type = "image/jpeg";
+        }
         $finalFileName = time() . "_" . $fileName;
-//        $tmpName = $_FILES[$imgName]['tmp_name'];
-        $folder = 'images/edited/';
-//        $type = $_FILES[$imgName]['type'];
-//        $error = $_FILES[$imgName]['error'];
+//        $folder = 'images/edited/';
         $alt = explode(".",$fileName);
         $alt = $alt[0];
 
 //        $new_image = $this->createImgInColor($imgPath, $type);
 
         $smallerFileName = 'edited_' . $finalFileName;
-        $path = $folder . $finalFileName;
-        $smallerFilePath = $folder . $smallerFileName;
+        array_pop($imgArray);
+        $imgPathString = implode("/",$imgArray);
+        $imgPathString .= "/";
+//        $path = $folder . $finalFileName;
+//        $smallerFilePath = $folder . $smallerFileName;
 
 //        switch ($type) {
 //            case 'image/jpeg':
@@ -243,37 +240,38 @@ class MovieController extends Controller
 //                break;
 //        }
 //        dd(realpath("images/tenet4.jpg"));
-        $file = fopen ("images/edited/beauty.png", "rb");//$imgPath
-        if ($file) {
-        //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
-            //echo "Slika je upload-ovana na server!";
-            $newf = fopen ($smallerFilePath, "a"); // to overwrite existing file
-
-            if ($newf){
-                while(!feof($file)) {
-                    fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
-
-                }
-            }else{
-                dd("ff");
-            }
-            if ($file) {
-                fclose($file);
-            }
-
-            if ($newf) {
-                fclose($newf);
-            }
+//        $file = fopen ("images/edited/beauty.png", "rb");//$imgPath
+//        if ($file) {
+//        //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
+//            //echo "Slika je upload-ovana na server!";
+//            $newf = fopen ($smallerFilePath, "a"); // to overwrite existing file
+//
+//            if ($newf){
+//                while(!feof($file)) {
+//                    fwrite($newf, fread($file, 1024 * 8 ), 1024 * 8 );
+//
+//                }
+//            }else{
+//                dd("ff");
+//            }
+//            if ($file) {
+//                fclose($file);
+//            }
+//
+//            if ($newf) {
+//                fclose($newf);
+//            }
 
             try{
-                dd(realpath($smallerFilePath));
-                dd(realpath("edited_1609263134_download1.jpg"));
-                $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $folder);
+//                $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
+                $response = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
+                dd($response);
+                $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $imgPathString);
                 return $picId;
             }catch (\PDOException $ex){
                 return back()->with("error","There was an error");
             }
-        }
+//        }
     }
 
     public function createImgInColor($tmpName, $type){

@@ -107,28 +107,16 @@
             </ul>
         </div>
     </div>
-    <form id="pokusaj" name="pokusaj" action="{{url('pokusaj')}}" method="post" enctype="multipart/form-data">
-        @csrf
-        <input type="file" name="pokusaj"/>
-        <input type="submit" value="Posalji"/>
-    </form>
-    <img src="{{asset("app/public/images/edited/edited_1609267611_download1.jpg")}}"/>
+{{--    <form id="pokusaj" name="pokusaj" action="{{url('pokusaj')}}" method="post" enctype="multipart/form-data">--}}
+{{--        @csrf--}}
+{{--        <input type="file" name="pokusaj"/>--}}
+{{--        <input type="submit" value="Posalji"/>--}}
+{{--    </form>--}}
+    <img src="https://res.cloudinary.com/dls0cb0e2/image/upload/v1610063581/dxycs5jjypxw3faeb0ea.jpg"/>
     <?php
 //    $smallerFileName = 'edited_' . "mica.jpg";
 //    $path = $folder . $finalFileName;
 //    $smallerFilePath = "images/edited/" . $smallerFileName;
-
-    //        switch ($type) {
-    //            case 'image/jpeg':
-    //                imagejpeg($new_image, $smallerFilePath, 75);
-    //                break;
-    //            case 'image/png':
-    //                imagepng($new_image, $smallerFilePath);
-    //                break;
-    //            case 'image/jpg':
-    //                imagejpg($new_image, $smallerFilePath);
-    //                break;
-    //        }
 //    $file = fopen ("images/tenet5.jpg", "rb");
 //    if ($file) {
 //        //SLIKA je vec uploadovana na server tako da je ovo nepotrebno
