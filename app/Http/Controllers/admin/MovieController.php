@@ -203,7 +203,6 @@ class MovieController extends Controller
         $picName = $_FILES[$fileName]['name'];
 
 
-        $imgArray = explode("/", $imgPath);
 //        $fileName = end($imgArray);
         $extension = strtolower(explode(".",$picName)[1]);
         $type = "";
@@ -222,9 +221,6 @@ class MovieController extends Controller
 //        $new_image = $this->createImgInColor($imgPath, $type);
 
         $smallerFileName = 'edited_' . $finalFileName;
-        array_pop($imgArray);
-        $imgPathString = implode("/",$imgArray);
-        $imgPathString .= "/";
 //        $path = $folder . $finalFileName;
 //        $smallerFilePath = $folder . $smallerFileName;
 
@@ -264,7 +260,11 @@ class MovieController extends Controller
 
             try{
 //                $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
-                $response = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
+                $path = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
+                $imgArray = explode("/", $path);
+                array_pop($imgArray);
+                $imgPathString = implode("/",$imgArray);
+                $imgPathString .= "/";
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $imgPathString);
                 return $picId;
             }catch (\PDOException $ex){

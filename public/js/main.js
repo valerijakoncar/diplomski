@@ -962,6 +962,7 @@ function formatDate(dateObj){
     let dateArray = [];
     let day = dateObj.getDate();
     let month = dateObj.getMonth();
+    month += 1;
     let year = dateObj.getFullYear();
     let hours = dateObj.getHours();
     let minutes = dateObj.getMinutes();
@@ -971,7 +972,7 @@ function formatDate(dateObj){
         day = '0' + day;
     }
     if(month < 10){
-        month = '0' + (month+1);
+        month = '0' + month;
     }
     if(hours < 10){
         hours = '0' + hours;
