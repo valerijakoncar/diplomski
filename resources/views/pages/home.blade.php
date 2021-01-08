@@ -112,7 +112,7 @@
 {{--        <input type="file" name="pokusaj"/>--}}
 {{--        <input type="submit" value="Posalji"/>--}}
 {{--    </form>--}}
-    <img src="https://res.cloudinary.com/dls0cb0e2/image/upload/v1610063581/dxycs5jjypxw3faeb0ea.jpg"/>
+{{--    <img src="https://res.cloudinary.com/dls0cb0e2/image/upload/v1610063581/dxycs5jjypxw3faeb0ea.jpg"/>--}}
     <?php
 //    $smallerFileName = 'edited_' . "mica.jpg";
 //    $path = $folder . $finalFileName;

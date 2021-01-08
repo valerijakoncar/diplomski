@@ -205,7 +205,7 @@ class MovieController extends Controller
 
         $imgArray = explode("/", $imgPath);
 //        $fileName = end($imgArray);
-        $extension = strtolower(explode(".",$fileName));
+        $extension = strtolower(explode(".",$fileName)[1]);
         $type = "";
         if($extension == 'jpg'){
             $type = "image/jpg";
