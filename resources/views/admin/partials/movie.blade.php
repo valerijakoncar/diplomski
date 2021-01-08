@@ -1,6 +1,6 @@
 <div class="movieAdmin">
     <div class="moviePicAdmin movieInfoAdmin">
-        @if(strpos($movie->path, "cloudinary"))
+        @if(strpos($m->path, "cloudinary"))
             <img src="{{ $m->path . $m->picName }}" alt="{{ $m->alt }}"/>
             @else
         <img src="{{ asset($m->path . $m->picName) }}" alt="{{ $m->alt }}"/>
