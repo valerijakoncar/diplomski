@@ -94,7 +94,7 @@ class MovieController extends Controller
         }
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
-        if ($request->input("picSliderMovIns") != null) {
+        if (!empty($_FILES[$imgNameSlider]['name'])) {
             $picSliderId = $this->proccessImg($request->file("picSliderMovIns")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
@@ -148,7 +148,7 @@ class MovieController extends Controller
         $picIds = [];
         $imgName = "picMovUpd";
         $picId = 0;
-        if ($request->input("picMovUpd") != null) {
+        if (!empty($_FILES[$imgName]['name'])) {
             $picId = $this->proccessImg($request->file("picMovUpd")->getRealPath(),$imgName);
             if($picId){
                 $picIds["picture_id"] = $picId;
@@ -156,7 +156,7 @@ class MovieController extends Controller
         }
         $imgNameBg = "picMovBgUpd";
         $picBgId = 0;
-        if ($request->input("picMovBgUpd") != null) {
+        if (!empty($_FILES[$imgNameBg]['name'])) {
             $picBgId = $this->proccessImg($request->file("picMovBgUpd")->getRealPath(),$imgNameBg);
             if($picBgId){
                 $picIds["about_movie_pic_id"] = $picBgId;
@@ -164,7 +164,7 @@ class MovieController extends Controller
         }
         $imgNameSlider = "picSliderMovUpd";
         $picSliderId = 0;
-        if ($request->input("picSliderMovUpd") != null) {
+        if (!empty($_FILES[$imgNameSlider]['name'])) {
             $picSliderId = $this->proccessImg($request->file("picSliderMovUpd")->getRealPath(),$imgNameSlider);//ova funkcija ne obradjuje sliku
             if($picSliderId){
                 $picIds["slider_picture_id"] = $picSliderId;
@@ -261,6 +261,7 @@ class MovieController extends Controller
             try{
 //                $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
                 $path = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
+//                dd($path);
                 $imgArray = explode("/", $path);
                 $cloudPicName = end($imgArray);
                 array_pop($imgArray);

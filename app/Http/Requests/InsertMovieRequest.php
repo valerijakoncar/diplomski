@@ -24,20 +24,20 @@ class InsertMovieRequest extends FormRequest
     public function rules()
     {
         return [
-            "picMovIns" => "required",
-            "picMovBgIns" => "required",
-            "picSliderMovIns" => "nullable"
+            "picMovIns" => "required|mimes:jpeg,jpg,png",
+            "picMovBgIns" => "required|mimes:jpeg,jpg,png",
+            "picSliderMovIns" => "nullable|mimes:jpeg,jpg,png"
         ];
     }
 //|mimes:jpeg,jpg,png
 
     public function messages(){
         return[
-//            "picMovIns.mimes" => "Picture must be jpeg, jpg or png.",
+            "picMovIns.mimes" => "Picture must be jpeg, jpg or png.",
             "picMovIns.required" => "Movie poster is required.",
-//            "picMovBgIns.mimes" => "Picture must be jpeg, jpg or png.",
+            "picMovBgIns.mimes" => "Picture must be jpeg, jpg or png.",
             "picMovBgIns.required" => "Background movie picture is required.",
-//            "picSliderMovIns.mimes" => "Picture must be jpeg, jpg or png."
+            "picSliderMovIns.mimes" => "Picture must be jpeg, jpg or png."
         ];
     }
 }
