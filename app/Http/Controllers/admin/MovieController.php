@@ -262,10 +262,11 @@ class MovieController extends Controller
 //                $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
                 $path = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
                 $imgArray = explode("/", $path);
+                $cloudPicName = end($imgArray);
                 array_pop($imgArray);
                 $imgPathString = implode("/",$imgArray);
                 $imgPathString .= "/";
-                $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $imgPathString);
+                $picId = $this->movieModel->insertImage($cloudPicName, $alt, $type, $imgPathString);
                 return $picId;
             }catch (\PDOException $ex){
                 return back()->with("error","There was an error");
