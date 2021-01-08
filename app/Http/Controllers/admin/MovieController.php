@@ -265,7 +265,6 @@ class MovieController extends Controller
             try{
 //                $response = cloudinary()->upload($request->file('pokusaj')->getRealPath())->getSecurePath();
                 $response = cloudinary()->upload( $_FILES[$fileName]['tmp_name'])->getSecurePath();
-                dd($response);
                 $picId = $this->movieModel->insertImage($smallerFileName, $alt, $type, $imgPathString);
                 return $picId;
             }catch (\PDOException $ex){
