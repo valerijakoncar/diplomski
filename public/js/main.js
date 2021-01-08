@@ -971,7 +971,7 @@ function formatDate(dateObj){
         day = '0' + day;
     }
     if(month < 10){
-        month = '0' + (month-1);
+        month = '0' + (month+1);
     }
     if(hours < 10){
         hours = '0' + hours;
@@ -2959,7 +2959,7 @@ function printMoviesAdmin(movies){
             <p class="headlineAdmMovie headlineAdmActors">Actors</p>
             <p class="actorsAdmMovie">`;
         for(let i=0; i<m.actors.length; i++){
-            if(i === m.actors.length){
+            if(i === m.actors.length-1){
                 html += `${m.actors[i].name}`;
             }else{
                 html += `${m.actors[i].name}, `;
