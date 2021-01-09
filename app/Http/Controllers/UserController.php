@@ -47,7 +47,7 @@ class UserController extends FrontController
             $text = $_SERVER['REMOTE_ADDR'] . "\t" . session('user')->username . " updated user with id: ". $id . "\t";
             $userId = session()->get('user')->id;
             $this->activityModel->write($text, date("Y.m.d H:i:s"), $userId);
-            return response()->json("", 200);
+            return response()->json("", 204);
         }catch(\PDOException $ex){
 //            dd($ex->getMessage());
             return response()->json("", 500);
