@@ -284,8 +284,8 @@
                 <label class="inputAdminLabel">Movie</label>
                 <select id="movieProjectionUpdate" name="movieProjectionUpdate" class="inputAdminClass">
                     <option value="0">Choose movie..</option>
-                    @foreach($movies as $m)
-                        <option value="{{$m->idMovie}}">{{$m->movieName}}</option>
+                    @foreach($allMovies as $m)
+                        <option value="{{$m->id}}">{{$m->name}}</option>
                         @endforeach
                 </select>
             </div>

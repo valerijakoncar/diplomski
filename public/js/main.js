@@ -2462,7 +2462,7 @@ function editProjClick(){
            $("#blurUpdateProj").fadeIn();
            $('body').css({'overflow':'hidden'});
            $(document).bind('scroll',function () {
-               window.scrollTo(0,0);
+               // window.scrollTo(0,0);
            });
        },
        error: function(err){

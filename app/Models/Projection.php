@@ -95,7 +95,7 @@ class Projection
             ->join("hall as h","p.hall_id","h.id")
             ->join("movie_technology as mt", "p.movie_technology_id","mt.id")
             ->join("technology as t","mt.technology_id","t.id")
-            ->select("m.id as idMovie","m.name as movieName","p.id as idProjection","p.starts_at","t.name as technName","t.id as idTechnology",
+            ->select("m.id as idMovie","m.name as movieName","p.id as idProjection","p.starts_at","t.name as technName","mt.id as idTechnology",
                 "h.name as hallName", "h.id as idHall","p.reservation_available")
             ->where([
                 ["p.id",$projectionId],
