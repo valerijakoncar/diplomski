@@ -1618,11 +1618,11 @@ function showX(){
 }
 
 function emptySearchInput(){
-    filterMovies();
     $("#movies #extendSearch").val("");
     $("#searchCont .fa-close").removeClass("visible");
     $("#searchCont .fa-close").addClass("notVisible");
     $("#movies #extendSearch").focus();
+    filterMovies();
 }
 
 function deleteFilters(){
