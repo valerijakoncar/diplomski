@@ -236,7 +236,7 @@ window.onload = function(){
         movieSlider();
     }
     $("#movies #extendSearch").keyup(showX);
-    $("#movies .fa-close").click(emptySearchInput);
+    $("#movies #searchCont .fa-close").click(emptySearchInput);
     $(".arrowsSlider").click(changeSliderMovie);
 
     var rbMoviesSort = document.getElementsByName("sortMovies");

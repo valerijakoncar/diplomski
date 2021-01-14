@@ -159,6 +159,7 @@ class Movie
             ]);
          $movies =  $movies->offset($offset)->limit($this->limit)
                     ->groupBy("idMovie","m.description","movieName","m.running_time","m.age_limit","m.description","m.in_cinemas_from","p.path","picName","p.alt" )
+                    ->orderBy("m.name", "ASC")
                     ->get();
 
         foreach($movies as $m){
