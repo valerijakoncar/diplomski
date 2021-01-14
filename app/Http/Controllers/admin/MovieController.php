@@ -196,7 +196,8 @@ class MovieController extends Controller
     public function getMovies($offset, $searched){
         $movies = $this->movieModel->getMoviesAdmin($offset, $searched);
         //dd($movies);
-        return response()->json(["movies"=>$movies], 200);
+        $allMovies = $this->movieModel->getAllMoviesAdmin();
+        return response()->json(["movies"=>$movies,"allMovies" => $allMovies], 200);
     }
 
     public function proccessImg($imgPath, $fileName){

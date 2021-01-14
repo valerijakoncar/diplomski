@@ -1618,6 +1618,7 @@ function showX(){
 }
 
 function emptySearchInput(){
+    filterMovies();
     $("#movies #extendSearch").val("");
     $("#searchCont .fa-close").removeClass("visible");
     $("#searchCont .fa-close").addClass("notVisible");
@@ -2912,7 +2913,7 @@ function searchMoviesAdm(searched){
             dataType: 'json',
             success: function(data){
                 printMoviesAdmin(data.movies);
-                printAdminMoviePagination(data.movies);
+                printAdminMoviePagination(data.allMovies);
             },
             error: function(error){
                 console.log(error);
@@ -2926,7 +2927,7 @@ function searchMoviesAdm(searched){
             success: function(data){
                // console.log(data.movies);
                 printMoviesAdmin(data.movies);
-                printAdminMoviePagination(data.movies);
+                printAdminMoviePagination(data.allMovies);
             },
             error: function(error){
                 console.log(error);
