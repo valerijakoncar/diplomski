@@ -1029,6 +1029,7 @@ a{
     justify-content: space-between;
     width: max-content;
     margin: 0px 0px 10px 0px;
+    position: relative;
 }
 .numberMovieGrade{ /*.movieInfo*/
     font-family: 'GO';
