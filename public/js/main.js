@@ -2927,7 +2927,7 @@ function searchMoviesAdm(searched){
             success: function(data){
                // console.log(data.movies);
                 printMoviesAdmin(data.movies);
-                printAdminMoviePagination(data.allMovies);
+                printAdminMoviePagination(data.movies);
             },
             error: function(error){
                 console.log(error);
