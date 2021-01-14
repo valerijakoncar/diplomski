@@ -1622,7 +1622,7 @@ function emptySearchInput(){
     $("#searchCont .fa-close").removeClass("visible");
     $("#searchCont .fa-close").addClass("notVisible");
     $("#movies #extendSearch").focus();
-    filterMovies();
+    // filterMovies();
 }
 
 function deleteFilters(){
