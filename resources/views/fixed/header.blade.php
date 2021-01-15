@@ -97,7 +97,7 @@
                     <div id="resDdlHolder">
                         <div class="custom-select" id="reservationDateDdlDiv">
                             <select id="reservationDateDdl" name="reservationDateDdl">
-                                <option value="<?=date('Y-m-d');?>">Today, <?=  date("D d.m.Y.", strtotime( $todayDate)); ?></option>
+                                <option value="<?=date('Y-m-d',strtotime($todayDate));?>">Today, <?=  date("D d.m.Y.", strtotime( $todayDate)); ?></option>
                                 <option value="<?= date("Y-m-d", strtotime( $todayDate . "1 day" )); ?>">Tomorrow, <?= date("D d.m.Y.", strtotime( $todayDate . "1 day" )); ?></option>
                                 <?php for($i = 2;$i <= 6;$i++){ ?>
                                 <option value="<?= date("Y-m-d", strtotime( $todayDate . $i . " day" )); ?>"><?= date("D d.m.Y.", strtotime( $todayDate . $i . " day" )); ?></option>
