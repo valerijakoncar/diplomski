@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ea457a8-bd26-4851-81b0-dcd8192c499b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Documentation.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/about_author.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/about_author.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/fixed/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/fixed/footer.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,15 +156,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\diplomski\public\images" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\diplomski\public" />
       <recent name="C:\xampp\htdocs\diplomski\public\images" />
     </key>
   </component>
@@ -207,7 +209,7 @@
       <workItem from="1609024496274" duration="60451000" />
       <workItem from="1610053319854" duration="18432000" />
       <workItem from="1610454319325" duration="5403000" />
-      <workItem from="1610626320724" duration="6420000" />
+      <workItem from="1610626320724" duration="13856000" />
     </task>
     <servers />
   </component>

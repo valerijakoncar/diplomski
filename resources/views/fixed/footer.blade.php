@@ -33,7 +33,7 @@
                     <div class="cleaner"></div>
                 </div>
                 </div>
-            <p id="copyright">Copyright ©&nbsp;&nbsp;MovieBlackout&nbsp;&nbsp;<?php echo date("Y");?></p>
+            <p id="copyright">Copyright ©&nbsp;&nbsp;MovieBlackout&nbsp;&nbsp;<?php echo date("Y");?> | <a href="{{asset('Documentation.pdf')}}">Documentation</a></p>
         </div>
         <div class="decorationalFooterDiv">
             <span></span>
