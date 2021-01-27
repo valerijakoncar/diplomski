@@ -1470,11 +1470,11 @@ function printMovies(movies){
                         <ul>`;
         html += writeStars(movie);
         html+=          `</ul></span>
-                        <p class="movieDesc"> ${movie.description }</p>`;
+                        <p class="movieDesc"> ${movie.description }</p><p>`;
         let i=0;
          for(let genre of movie.genres){
              i++;
-             html += `<p>${genre.genre}`;
+             html += `${genre.genre}`;
              if(movie.genres.length !== i){
                  html += `, `;
              }
