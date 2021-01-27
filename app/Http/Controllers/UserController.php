@@ -64,9 +64,9 @@ class UserController extends FrontController
         $userCode = $request->input("accountAccessCode");
         $newPass = $request->input("accountAccessPass");
         $email = $request->session()->get('email');
-        dd("gg");
         if($code === $userCode){
             try{
+                dd("gg");
                 $this->userModel->changePassword($email, $newPass);
                 $this->data['successfullyChangedPass'] = "Your password was changed successfully.";
                 return view("pages.regain_account_access", $this->data);
