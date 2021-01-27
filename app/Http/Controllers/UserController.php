@@ -66,8 +66,8 @@ class UserController extends FrontController
         $email = $request->session()->get('email');
         if($code === $userCode){
             try{
-                dd("gg");
                 $this->userModel->changePassword($email, $newPass);
+                dd("gg");
                 $this->data['successfullyChangedPass'] = "Your password was changed successfully.";
                 return view("pages.regain_account_access", $this->data);
             }catch(\PDOException $ex){
