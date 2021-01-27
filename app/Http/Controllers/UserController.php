@@ -68,7 +68,7 @@ class UserController extends FrontController
             try{
                 $this->userModel->changePassword($email, $newPass);
                 $this->data['successfullyChangedPass'] = "Your password was changed successfully.";
-                dd($this->data);
+//                dd($this->data);
                 return view("pages.regain_account_access", $this->data);
             }catch(\PDOException $ex){
                 return redirect()->back()->with("error", "There was an error.");
